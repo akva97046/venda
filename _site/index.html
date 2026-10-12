@@ -5,18 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Leilão do domínio exercitodolula.com.br</title>
   <meta name="description" content="Participe do leilão manual do domínio exercitodolula.com.br e envie seu lance.">
-  <link rel="stylesheet" href="/venda/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6JTXZMTK7N"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6JTXZMTK7N');
-</script>
-
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JTXZMTK7N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6JTXZMTK7N');
+  </script>
 </head>
 <body>
   <main class="container">
@@ -26,76 +24,83 @@
   <p class="lead">Envie seu lance para participar do leilão manual deste domínio.</p>
 </section>
 
-<section class="card auction-summary" aria-labelledby="auction-title">
-  <h2 id="auction-title">Informações do leilão</h2>
-  <dl class="auction-details">
-    <div>
-      <dt>Status</dt>
-      <dd>Recebendo lances</dd>
-    </div>
-    <div>
-      <dt>Último Lance</dt>
-      <dd>R$ 5.200,00</dd>
-    </div>
-    <div>
-      <dt>Incremento mínimo</dt>
-      <dd>R$ 200,00</dd>
-    </div>
-    <div>
-      <dt>Encerramento</dt>
-      <dd>16/10/2026 às 20h</dd>
-    </div>
-  </dl>
-  <p class="notice"><strong>Importante:</strong> este é um leilão manual. Os lances são recebidos por e-mail, validados pelo vendedor e não aparecem publicamente em tempo real.</p>
-</section>
+<div class="content-grid">
+  <section class="card auction-summary" aria-labelledby="auction-title">
+    <p class="eyebrow">Visão geral</p>
+    <h2 id="auction-title">Informações do leilão</h2>
+    <dl class="auction-details">
+      <div>
+        <dt>Status</dt>
+        <dd><span class="status-dot" aria-hidden="true"></span>Recebendo lances</dd>
+      </div>
+      <div>
+        <dt>Último Lance</dt>
+        <dd>R$ 5.200,00</dd>
+      </div>
+      <div>
+        <dt>Incremento mínimo</dt>
+        <dd>R$ 200,00</dd>
+      </div>
+      <div>
+        <dt>Encerramento</dt>
+        <dd>16/10/2026 às 20h</dd>
+      </div>
+    </dl>
+    <p class="notice"><strong>Importante:</strong> este é um leilão manual. Os lances são recebidos por e-mail, validados pelo vendedor e não aparecem publicamente em tempo real.</p>
+  </section>
 
-<section class="card" aria-labelledby="form-title">
-  <h2 id="form-title">Envie seu lance</h2>
-  <p>Preencha seus dados. O maior lance válido será considerado pelo vendedor, que entrará em contato para confirmar o resultado.</p>
+  <section class="card bid-card" aria-labelledby="form-title">
+    <p class="eyebrow">Participe agora</p>
+    <h2 id="form-title">Envie seu lance</h2>
+    <p>Preencha seus dados. O maior lance válido será considerado pelo vendedor, que entrará em contato para confirmar o resultado.</p>
 
-  <!-- O FormSubmit encaminha o lance para análise manual do vendedor. -->
-  <form action="https://formsubmit.co/akva9706@gmail.com" method="POST">
-    <input type="hidden" name="_subject" value="Novo lance no leilão de exercitodolula.com.br">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_next" value="https://akva97046.github.io/venda/obrigado/">
-    <!-- Honeypot anti-spam: deve ficar vazio -->
-    <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <!-- O FormSubmit encaminha o lance para análise manual do vendedor. -->
+    <form action="https://formsubmit.co/akva9706@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Novo lance no leilão de exercitodolula.com.br">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://exercitodolula.com.br/obrigado/">
+      <!-- Honeypot anti-spam: deve ficar vazio -->
+      <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-    <div class="field">
-      <label for="nome">Nome completo</label>
-      <input type="text" id="nome" name="nome" required autocomplete="name">
-    </div>
+      <div class="form-fields">
+        <div class="field">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="nome" required autocomplete="name">
+        </div>
 
-    <div class="field">
-      <label for="email">E-mail</label>
-      <input type="email" id="email" name="email" required autocomplete="email">
-    </div>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
 
-    <div class="field">
-      <label for="telefone">Telefone / WhatsApp <span class="optional">(opcional)</span></label>
-      <input type="tel" id="telefone" name="telefone" autocomplete="tel">
-    </div>
+        <div class="field">
+          <label for="telefone">Telefone / WhatsApp <span class="optional">(opcional)</span></label>
+          <input type="tel" id="telefone" name="telefone" autocomplete="tel">
+        </div>
 
-    <div class="field">
-      <label for="lance">Valor do seu lance (R$)</label>
-      <input type="number" id="lance" name="lance" min="0.01" step="0.01" required inputmode="decimal">
-    </div>
+        <div class="field">
+          <label for="lance">Valor do seu lance (R$)</label>
+          <input type="number" id="lance" name="lance" min="0.01" step="0.01" required inputmode="decimal">
+        </div>
 
-    <div class="field">
-      <label for="mensagem">Mensagem <span class="optional">(opcional)</span></label>
-      <textarea id="mensagem" name="mensagem" rows="5" placeholder="Inclua alguma observação, se necessário."></textarea>
-    </div>
+        <div class="field field-full">
+          <label for="mensagem">Mensagem <span class="optional">(opcional)</span></label>
+          <textarea id="mensagem" name="mensagem" rows="5" placeholder="Inclua alguma observação, se necessário."></textarea>
+        </div>
+      </div>
 
-    <label class="checkbox-field" for="regras">
-      <input type="checkbox" id="regras" name="aceite_regras" value="sim" required>
-      <span>Li as regras do leilão e entendo que o lance será analisado manualmente, sem garantia automática de aceitação.</span>
-    </label>
+      <label class="checkbox-field" for="regras">
+        <input type="checkbox" id="regras" name="aceite_regras" value="sim" required>
+        <span>Li as regras do leilão e entendo que o lance será analisado manualmente, sem garantia automática de aceitação.</span>
+      </label>
 
-    <button type="submit">Enviar lance para análise</button>
-  </form>
-</section>
+      <button type="submit">Enviar lance para análise <span aria-hidden="true">→</span></button>
+    </form>
+  </section>
+</div>
 
 <section class="card rules" aria-labelledby="rules-title">
+  <p class="eyebrow">Antes de enviar</p>
   <h2 id="rules-title">Regras do leilão</h2>
   <ol>
     <li>O lance deve ser enviado pelo formulário com dados de contato válidos.</li>
@@ -105,6 +110,20 @@
     <li>O envio do formulário não representa pagamento, contrato ou transferência automática do domínio.</li>
   </ol>
 </section>
+
+<dialog class="bid-modal" id="last-bid-modal" aria-labelledby="last-bid-title">
+  <div class="modal-content">
+    <button class="modal-close" type="button" data-close-modal aria-label="Fechar aviso">&times;</button>
+    <p class="modal-kicker">Atualização do leilão</p>
+    <div class="modal-icon" aria-hidden="true">↗</div>
+    <h2 id="last-bid-title">O último lance registrado foi de <strong>R$ 5.200,00</strong></h2>
+    <p>Esta é a sua oportunidade de enviar uma proposta superior e participar do leilão de <strong>exercitodolula.com.br</strong>.</p>
+    <a class="button modal-action" href="#form-title" data-close-modal>Enviar meu lance</a>
+    <p class="modal-caption">Leilão manual · análise realizada pelo vendedor</p>
+  </div>
+</dialog>
+
+<script src="/assets/js/bid-modal.js" defer></script>
 
   </main>
   <footer class="footer">
