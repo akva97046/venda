@@ -2,9 +2,12 @@
 layout: default
 ---
 <section class="hero">
-  <p class="badge">Leilão manual</p>
-  <h1>{{ site.domain_name }}</h1>
-  <p class="lead">Envie seu lance para participar do leilão manual deste domínio.</p>
+  <div class="auction-alert" role="status">
+    <span class="auction-alert-label">Leilão de domínio</span>
+    <strong>{{ site.domain_name }}</strong> está recebendo lances
+  </div>
+  <h1>Domínio em leilão</h1>
+  <p class="lead">Faça seu lance para adquirir <strong>{{ site.domain_name }}</strong>. Esta é uma venda por leilão manual.</p>
 </section>
 
 <div class="content-grid">
