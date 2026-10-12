@@ -2,17 +2,41 @@
 layout: default
 ---
 <section class="hero">
-  <p class="badge">Domínio à venda</p>
+  <p class="badge">Leilão manual</p>
   <h1>{{ site.domain_name }}</h1>
-  <p class="lead">Este domínio está disponível para compra. Preencha o formulário abaixo e envie sua proposta.</p>
+  <p class="lead">Envie seu lance para participar do leilão manual deste domínio.</p>
+</section>
+
+<section class="card auction-summary" aria-labelledby="auction-title">
+  <h2 id="auction-title">Informações do leilão</h2>
+  <dl class="auction-details">
+    <div>
+      <dt>Status</dt>
+      <dd>{{ site.auction_status }}</dd>
+    </div>
+    <div>
+      <dt>Lance inicial</dt>
+      <dd>{{ site.auction_initial_bid }}</dd>
+    </div>
+    <div>
+      <dt>Incremento mínimo</dt>
+      <dd>{{ site.auction_minimum_increment }}</dd>
+    </div>
+    <div>
+      <dt>Encerramento</dt>
+      <dd>{{ site.auction_deadline }}</dd>
+    </div>
+  </dl>
+  <p class="notice"><strong>Importante:</strong> este é um leilão manual. Os lances são recebidos por e-mail, validados pelo vendedor e não aparecem publicamente em tempo real.</p>
 </section>
 
 <section class="card" aria-labelledby="form-title">
-  <h2 id="form-title">Faça sua oferta</h2>
+  <h2 id="form-title">Envie seu lance</h2>
+  <p>Preencha seus dados. O maior lance válido será considerado pelo vendedor, que entrará em contato para confirmar o resultado.</p>
 
-  <!-- Envio via FormSubmit.co: encaminha os dados para o e-mail configurado -->
+  <!-- O FormSubmit encaminha o lance para análise manual do vendedor. -->
   <form action="https://formsubmit.co/{{ site.contact_email }}" method="POST">
-    <input type="hidden" name="_subject" value="Nova proposta para {{ site.domain_name }}">
+    <input type="hidden" name="_subject" value="Novo lance no leilão de {{ site.domain_name }}">
     <input type="hidden" name="_template" value="table">
     <input type="hidden" name="_next" value="{{ '/obrigado/' | absolute_url }}">
     <!-- Honeypot anti-spam: deve ficar vazio -->
@@ -34,15 +58,31 @@ layout: default
     </div>
 
     <div class="field">
-      <label for="oferta">Valor da oferta (R$)</label>
-      <input type="number" id="oferta" name="oferta" min="1" step="0.01" required inputmode="decimal">
+      <label for="lance">Valor do seu lance (R$)</label>
+      <input type="number" id="lance" name="lance" min="0.01" step="0.01" required inputmode="decimal">
     </div>
 
     <div class="field">
       <label for="mensagem">Mensagem <span class="optional">(opcional)</span></label>
-      <textarea id="mensagem" name="mensagem" rows="5"></textarea>
+      <textarea id="mensagem" name="mensagem" rows="5" placeholder="Inclua alguma observação, se necessário."></textarea>
     </div>
 
-    <button type="submit">Enviar proposta</button>
+    <label class="checkbox-field" for="regras">
+      <input type="checkbox" id="regras" name="aceite_regras" value="sim" required>
+      <span>Li as regras do leilão e entendo que o lance será analisado manualmente, sem garantia automática de aceitação.</span>
+    </label>
+
+    <button type="submit">Enviar lance para análise</button>
   </form>
+</section>
+
+<section class="card rules" aria-labelledby="rules-title">
+  <h2 id="rules-title">Regras do leilão</h2>
+  <ol>
+    <li>O lance deve ser enviado pelo formulário com dados de contato válidos.</li>
+    <li>Somente lances recebidos até o encerramento e validados pelo vendedor serão considerados.</li>
+    <li>O maior lance válido será selecionado, mas a venda só será concluída após a confirmação do vendedor e do comprador.</li>
+    <li>O vencedor será contatado por e-mail para combinar pagamento e transferência do domínio.</li>
+    <li>O envio do formulário não representa pagamento, contrato ou transferência automática do domínio.</li>
+  </ol>
 </section>
