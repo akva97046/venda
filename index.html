@@ -4,109 +4,38 @@ layout: default
 <section class="hero">
   <div class="auction-alert" role="status">
     <span class="auction-alert-label">Leilão de domínio</span>
-    <strong>{{ site.domain_name }}</strong> está recebendo lances
+    <strong>{{ site.domain_name }}</strong> foi finalizado
   </div>
-  <h1>Domínio em leilão</h1>
-  <p class="lead">Faça seu lance para adquirir <strong>{{ site.domain_name }}</strong>. Esta é uma venda por leilão manual.</p>
+  <h1>Leilão finalizado</h1>
+  <p class="lead">O período para envio de lances para <strong>{{ site.domain_name }}</strong> foi encerrado.</p>
 </section>
 
-<div class="content-grid">
-  <section class="card auction-summary" aria-labelledby="auction-title">
-    <p class="eyebrow">Visão geral</p>
-    <h2 id="auction-title">Informações do leilão</h2>
-    <dl class="auction-details">
-      <div>
-        <dt>Status</dt>
-        <dd><span class="status-dot" aria-hidden="true"></span>{{ site.auction_status }}</dd>
-      </div>
-      <div>
-        <dt>Último Lance</dt>
-        <dd>{{ site.auction_initial_bid }}</dd>
-      </div>
-      <div>
-        <dt>Incremento mínimo</dt>
-        <dd>{{ site.auction_minimum_increment }}</dd>
-      </div>
-      <div>
-        <dt>Encerramento</dt>
-        <dd>{{ site.auction_deadline }}</dd>
-      </div>
-    </dl>
-    <p class="notice"><strong>Importante:</strong> este é um leilão manual. Os lances são recebidos por e-mail, validados pelo vendedor e não aparecem publicamente em tempo real.</p>
-  </section>
-
-  <section class="card bid-card" aria-labelledby="form-title">
-    <p class="eyebrow">Participe agora</p>
-    <h2 id="form-title">Envie seu lance</h2>
-    <p>Preencha seus dados. O maior lance válido será considerado pelo vendedor, que entrará em contato para confirmar o resultado.</p>
-
-    <!-- O FormSubmit encaminha o lance para análise manual do vendedor. -->
-    <form action="https://formsubmit.co/{{ site.contact_email }}" method="POST">
-      <input type="hidden" name="_subject" value="Novo lance no leilão de {{ site.domain_name }}">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="{{ '/obrigado/' | absolute_url }}">
-      <!-- Honeypot anti-spam: deve ficar vazio -->
-      <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-      <div class="form-fields">
-        <div class="field">
-          <label for="nome">Nome completo</label>
-          <input type="text" id="nome" name="nome" required autocomplete="name">
-        </div>
-
-        <div class="field">
-          <label for="email">E-mail</label>
-          <input type="email" id="email" name="email" required autocomplete="email">
-        </div>
-
-        <div class="field">
-          <label for="telefone">Telefone / WhatsApp <span class="optional">(opcional)</span></label>
-          <input type="tel" id="telefone" name="telefone" autocomplete="tel">
-        </div>
-
-        <div class="field">
-          <label for="lance">Valor do seu lance (R$)</label>
-          <input type="number" id="lance" name="lance" min="0.01" step="0.01" required inputmode="decimal">
-        </div>
-
-        <div class="field field-full">
-          <label for="mensagem">Mensagem <span class="optional">(opcional)</span></label>
-          <textarea id="mensagem" name="mensagem" rows="5" placeholder="Inclua alguma observação, se necessário."></textarea>
-        </div>
-      </div>
-
-      <label class="checkbox-field" for="regras">
-        <input type="checkbox" id="regras" name="aceite_regras" value="sim" required>
-        <span>Li as regras do leilão e entendo que o lance será analisado manualmente, sem garantia automática de aceitação.</span>
-      </label>
-
-      <button type="submit">Enviar lance para análise <span aria-hidden="true">→</span></button>
-    </form>
-  </section>
-</div>
-
-<section class="card rules" aria-labelledby="rules-title">
-  <p class="eyebrow">Antes de enviar</p>
-  <h2 id="rules-title">Regras do leilão</h2>
-  <ol>
-    <li>O lance deve ser enviado pelo formulário com dados de contato válidos.</li>
-    <li>Somente lances recebidos até o encerramento e validados pelo vendedor serão considerados.</li>
-    <li>O maior lance válido será selecionado, mas a venda só será concluída após a confirmação do vendedor e do comprador.</li>
-    <li>O vencedor será contatado por e-mail para combinar pagamento e transferência do domínio.</li>
-    <li>O envio do formulário não representa pagamento, contrato ou transferência automática do domínio.</li>
-  </ol>
+<section class="card auction-summary" aria-labelledby="auction-title">
+  <p class="eyebrow">Resultado</p>
+  <h2 id="auction-title">Informações do leilão</h2>
+  <dl class="auction-details">
+    <div>
+      <dt>Status</dt>
+      <dd>{{ site.auction_status }}</dd>
+    </div>
+    <div>
+      <dt>Último lance registrado</dt>
+      <dd>{{ site.auction_last_bid }}</dd>
+    </div>
+    <div>
+      <dt>Encerramento</dt>
+      <dd>{{ site.auction_deadline }}</dd>
+    </div>
+    <div>
+      <dt>Fuso horário</dt>
+      <dd>{{ site.auction_timezone }}</dd>
+    </div>
+  </dl>
+  <p class="notice"><strong>Obrigado a todos os participantes.</strong> Não estamos mais recebendo novos lances. O resultado será tratado diretamente com os participantes envolvidos.</p>
 </section>
 
-<dialog class="bid-modal" id="last-bid-modal" aria-labelledby="last-bid-title">
-  <div class="modal-content">
-    <button class="modal-close" type="button" data-close-modal aria-label="Fechar aviso">&times;</button>
-    <p class="modal-kicker">Atualização do leilão</p>
-    <div class="modal-icon" aria-hidden="true">↗</div>
-    <h2 id="last-bid-title">O último lance registrado foi de <strong>{{ site.auction_last_bid }}</strong></h2>
-    <p>Esta é a sua oportunidade de enviar uma proposta superior e participar do leilão de <strong>{{ site.domain_name }}</strong>.</p>
-    <a class="button modal-action" href="#form-title" data-close-modal>Enviar meu lance</a>
-    <p class="modal-caption">Leilão manual · análise realizada pelo vendedor</p>
-  </div>
-</dialog>
-
-<script src="{{ '/assets/js/bid-modal.js' | relative_url }}" defer></script>
+<section class="card rules" aria-labelledby="notice-title">
+  <p class="eyebrow">Comunicado</p>
+  <h2 id="notice-title">Novos lances encerrados</h2>
+  <p>O formulário de lances foi desativado após o encerramento do leilão. O envio de um formulário não é mais aceito como participação nesta venda.</p>
+</section>
